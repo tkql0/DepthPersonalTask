@@ -1,18 +1,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;
-using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
-    public int moveSpeed = 1;
-    // 길건너 친구들은 한칸씩 이동하기 때문에 int로 설정
-
     private Rigidbody _rigidbody;
     private Animator _animator;
 
-    private static readonly int isJump = Animator.StringToHash("isJump");
+    private Vector2 _inputVector;
 
+    private static readonly int isJump = Animator.StringToHash("isJump");
+    private static readonly int isEnemyHitDie = Animator.StringToHash("isEnemyHitDie");
+    private static readonly int isTreeHitDie = Animator.StringToHash("isTreeHitDie");
 
     private void Awake()
     {
@@ -34,7 +32,26 @@ public class PlayerController : MonoBehaviour
     {
         if(inContext.phase == InputActionPhase.Started)
         { // 특정 키를 눌렸다면
-            Move(inContext.ReadValue<Vector2>());
+            _inputVector = inContext.ReadValue<Vector2>();
+
+            Move(_inputVector);
+        }
+    }
+
+    private void OnTriggerEnter(Collider inOther)
+    {
+        if (inOther.TryGetComponent<Enemy>(out var outEnemy))
+        {
+            _animator.SetBool(isEnemyHitDie, true);
+        }
+        else if (inOther.TryGetComponent<Tree>(out var outTree))
+        {
+            _animator.SetBool(isTreeHitDie, true);
+            Vector3 dir = new Vector3(_inputVector.x, 0, _inputVector.y);
+            Vector3 newPosition = _rigidbody.position - dir;
+
+            _rigidbody.MovePosition(newPosition);
+            transform.rotation = Quaternion.LookRotation(dir);
         }
     }
 }
