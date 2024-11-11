@@ -40,7 +40,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "1eac8eaa-1680-45f1-8f67-bd27d14fea2e",
+                    "id": "b5305934-2fbf-47f7-a0c7-20f4c4866a51",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -84,7 +84,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "4a9f1193-20a8-4ee1-9cf6-13a168269c6e",
+                    "id": "6b380555-fc3e-482f-b7d2-be93c6547d41",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
