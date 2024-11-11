@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,10 +9,15 @@ public class PlayerController : MonoBehaviour
     // 길건너 친구들은 한칸씩 이동하기 때문에 int로 설정
 
     private Rigidbody _rigidbody;
+    private Animator _animator;
+
+    private static readonly int isJump = Animator.StringToHash("isJump");
+
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Move(Vector2 inInputVector)
@@ -21,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
         _rigidbody.MovePosition(newPosition);
         transform.rotation = Quaternion.LookRotation(dir);
+        _animator.SetTrigger(isJump);
     }
 
     public void OnMove(InputAction.CallbackContext inContext)
