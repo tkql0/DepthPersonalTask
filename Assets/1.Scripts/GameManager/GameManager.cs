@@ -5,4 +5,7 @@ using UnityEngine;
 public class GameManager : MonoSingleTon<GameManager>
 {
     public Player player;
+
+    public ParticleSystem coinParticleSystem;
+    public ParticleSystem fallParticleSystem;
 }
