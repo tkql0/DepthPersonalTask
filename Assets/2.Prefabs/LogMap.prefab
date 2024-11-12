@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1298300979997347439}
   - component: {fileID: 190378033882947411}
   - component: {fileID: 1979944767199503280}
+  - component: {fileID: 4595748405174548569}
   m_Layer: 0
   m_Name: LogMap
   m_TagString: Untagged
@@ -106,6 +107,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4595748405174548569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893431141828279176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0612b187d818c4d94ec3aa56bffb90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &70516434951300769
 PrefabInstance:
   m_ObjectHideFlags: 0
