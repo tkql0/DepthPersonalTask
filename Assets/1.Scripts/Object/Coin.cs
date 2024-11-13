@@ -7,29 +7,29 @@ public class Coin : MonoBehaviour
 {
     private Vector3 _particleSpawnPosition;
 
+    public int coinValue = 1;
+
     private void Start()
     {
         _particleSpawnPosition = new Vector3(0, 1, 0);
-        GameManager.Instance.player.controller.OnItemAdd += AddScore;
     }
 
     public void AddScore()
     {
-        ParticleSpawn();
+        GameManager.Instance.UpdateCoinCount(coinValue);
+
+        GameManager.Instance.
+            ParticleSpawn(transform.position + _particleSpawnPosition,
+            GameManager.Instance.coinParticleSystem, 100);
 
         gameObject.SetActive(false);
     }
 
-    private void ParticleSpawn()
+    private void OnTriggerEnter(Collider other)
     {
-        ParticleSystem particleSystem =
-            Instantiate(GameManager.Instance.coinParticleSystem);
-        particleSystem.transform.position = transform.position + _particleSpawnPosition;
-        // 내위치에서 파티클 실행
-        particleSystem.Stop();
-        ParticleSystem.EmissionModule emissionModule =
-                particleSystem.emission;
-        emissionModule.SetBurst(0, new ParticleSystem.Burst(0, 100));
-        particleSystem.Play();
-    }    
+        if(other.TryGetComponent<Player>(out var outPlayer))
+        {
+            AddScore();
+        }
+    }
 }

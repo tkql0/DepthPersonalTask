@@ -59,14 +59,5 @@ public class PlayerController : MonoBehaviour
             _rigidbody.MovePosition(newPosition);
             transform.rotation = Quaternion.LookRotation(dir);
         }
-        else if (inOther.TryGetComponent<Coin>(out var outCoin))
-        {
-            OnItemAdd?.Invoke();
-        }
-        else if (inOther.TryGetComponent<MapController>(out var outMap))
-        {
-            isSwimming = true;
-            OnDie?.Invoke();
-        }
     }
 }
