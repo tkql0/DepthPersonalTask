@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool : MonoSingleTon<ObjectPool>
 {
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
@@ -10,7 +10,6 @@ public class ObjectPool : MonoBehaviour
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
         PoolSettings[] poolSettingsList = Resources.LoadAll<PoolSettings>("PoolingSettings");
-
         foreach (var pool in poolSettingsList)
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
