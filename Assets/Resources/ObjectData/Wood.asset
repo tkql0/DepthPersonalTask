@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c474ac5deea7c4f95adc21b06e0be3, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
-  speed: 1
+  itemName: Wood
+  prefab: {fileID: 7424343051455581722, guid: bd2ee63cf20121444bddfe915c0ee0d9, type: 3}
+  speedMin: 1
+  speedMax: 4
   color: {r: 0.33962262, g: 0.19903468, b: 0.030437868, a: 0}

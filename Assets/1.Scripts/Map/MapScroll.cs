@@ -38,6 +38,7 @@ public class MapScroll : MonoBehaviour
             PositionReSet();
         }
     }
+
     private void PositionReSet()
     {
         GameObject newMapObject = mapGenerator.

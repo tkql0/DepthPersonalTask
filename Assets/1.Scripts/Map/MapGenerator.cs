@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    private string[] mapNameArray = { "EnemyMap", "LogMap", "TreeMap" };
+    private string[] mapNameArray = { "EnemyMap", "WaterMap", "TreeMap" };
     public List<GameObject> mapObjectArray = new List<GameObject>();
 
     private float mapSpawnDistance = 1;
@@ -21,6 +21,7 @@ public class MapGenerator : MonoBehaviour
     private void StartMapSpawn(int inSpawnCount)
     {
         GameObject newMapObject = GetMapObject();
+
         newMapObject.transform.position =
             new Vector3(0, 0, inSpawnCount * mapSpawnDistance);
         mapObjectArray.Add(newMapObject);
@@ -30,9 +31,6 @@ public class MapGenerator : MonoBehaviour
     {
         int randomMap = Random.Range(0, mapNameArray.Length);
         GameObject outNewMap = ObjectPool.Instance.SpawnFromPool(mapNameArray[randomMap]);
-
-        //ItemManager.Instance.SpawnItemInMap(outNewMap.GetComponent<MapScroller>());
-        //ObstacleManager.Instance.SpawnObstacleInMap(outNewMap.GetComponent<MapScroller>());
 
         return outNewMap;
     }

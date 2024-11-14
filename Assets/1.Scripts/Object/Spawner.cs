@@ -9,17 +9,15 @@ public class Spawner : MonoBehaviour
 
     public float delayMin = 1.5f;
     public float delayMax = 5;
-    public float speedMin = 1;
-    public float speedMax = 4;
 
     public bool useSpawnPlacement = false;
     public int spawnCount = 4;
 
     private float lastTime = 0;
     private float delayTime = 0;
-    private float speed = 0;
+    private Color spawnColor;
 
-    //[HideInInspector] public ItemObject Item = null;
+    [HideInInspector] public ObjectSO Item = null;
     [HideInInspector] public bool goLeft = false;
     [HideInInspector] public float spawnLeftPos = 0;
     [HideInInspector] public float spawnRightPos = 0;
@@ -30,12 +28,8 @@ public class Spawner : MonoBehaviour
         {
             for (int i = 0; i < spawnCount; i++)
             {
-                //SpawnItem();
+                SpawnItem();
             }
-        }
-        else
-        {
-            speed = Random.Range(speedMin, speedMax);
         }
     }
 
@@ -47,31 +41,36 @@ public class Spawner : MonoBehaviour
         {
             lastTime = Time.time;
             delayTime = Random.Range(delayMin, delayMax);
-            //SpawnItem();
+            SpawnItem();
         }
     }
 
-    //void SpawnItem()
-    //{
-    //    Debug.Log("Spawn Item");
-    //    GameObject obj = Manager.instance.SpawnFromPool(Item.id);
-    //    obj.transform.position = GetSpawnPosition();
+    void SpawnItem()
+    {
+        Debug.Log("Spawn Item");
+        GameObject newObject = ObjectPool.Instance.SpawnFromPool(Item.itemName);
+        newObject.transform.position = GetSpawnPosition();
+        float direction = 0;
+        if (goLeft) direction = 180;
 
-    //    float direction = 0;
-    //    if (goLeft) direction = 180;
-
-    //    if (!useSpawnPlacement)
-    //    {
-    //        obj.GetComponent<Mover>().speed = speed;
-    //        obj.transform.rotation = obj.transform.rotation * Quaternion.Euler(0, direction, 0);
-    //    }
-    //}
+        if (!useSpawnPlacement)
+        {
+            if (!newObject.TryGetComponent<ItemObject>(out var outItemData))
+            {
+                return;
+            }
+            outItemData.speed = Item.randomSpeed();
+            outItemData.color = Item.color;
+            newObject.transform.rotation =
+                newObject.transform.rotation * Quaternion.Euler(0, direction, 0);
+        }
+    }
 
     Vector3 GetSpawnPosition()
     {
         if (useSpawnPlacement)
         {
-            return new Vector3(Random.Range(spawnLeftPos, spawnRightPos), startPos.position.y, startPos.position.z);
+            return new Vector3(Random.Range(spawnLeftPos, spawnRightPos), 0.45f, startPos.position.z);
         }
         else
         {

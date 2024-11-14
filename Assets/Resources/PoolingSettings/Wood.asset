@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 830a1f79abe3db64a991dc16ad44c35b, type: 3}
-  m_Name: LogMap
+  m_Name: Wood
   m_EditorClassIdentifier: 
-  tag: LogMap
-  prefab: {fileID: 1893431141828279176, guid: 324ae02a9c4acb945ac19a85122ad7a1, type: 3}
+  tag: Wood
+  prefab: {fileID: 7424343051455581722, guid: bd2ee63cf20121444bddfe915c0ee0d9, type: 3}
   size: 15

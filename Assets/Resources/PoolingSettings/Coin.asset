@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4c474ac5deea7c4f95adc21b06e0be3, type: 3}
-  m_Name: RadCar
+  m_Script: {fileID: 11500000, guid: 830a1f79abe3db64a991dc16ad44c35b, type: 3}
+  m_Name: Coin
   m_EditorClassIdentifier: 
-  itemName: RedCar
-  prefab: {fileID: 4773050246646903828, guid: 3c1b196fc283a854189cfe2df0ff73c6, type: 3}
-  speedMin: 1
-  speedMax: 3
-  color: {r: 1, g: 0, b: 0, a: 0}
+  tag: Coin
+  prefab: {fileID: 8825047188737480609, guid: 511216c0dd429da43a3c2a8fdbf376d1, type: 3}
+  size: 15

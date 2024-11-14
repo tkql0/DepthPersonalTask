@@ -5,29 +5,30 @@ using UnityEngine;
 public class ObjectMove : MonoBehaviour
 {
     private Vector3 _targetPosition;
+    private Renderer renderer;
+    public Color color;
+    public float speed;
 
-    private float speed = 1;
+    private void Start()
+    {
+        renderer = GetComponent<Renderer>();
+    }
 
     private void OnEnable()
-    { // 여기를 안거치네 // 아 이미 생성되있는 오브젝트라 위치가 이상한거구나
-        _targetPosition = new Vector3(-transform.position.x,
-            transform.position.y, transform.position.z);
-        Debug.Log($"{_targetPosition.x} + {_targetPosition.z}");
+    {
+        renderer.material.color = color;
     }
 
     private void Update()
     {
-        if(Vector3.Distance(transform.position, _targetPosition) <= 0)
+        if (transform.position.x < -25f || transform.position.x > 25f)
         {
             gameObject.SetActive(false);
         }
-
-        //transform.Translate(speed * Time.deltaTime, 0, 0);
     }
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position,
-            _targetPosition, speed * Time.fixedDeltaTime);
+        transform.Translate(speed * Time.fixedDeltaTime, 0, 0);
     }
 }

@@ -24,14 +24,14 @@ public class GameManager : MonoSingleTon<GameManager>
 
     private void Start()
     {
-        //effect = GetComponent<AudioSource>();
-        //clip = effect.clip;
+        effect = GetComponent<AudioSource>();
+        clip = effect.clip;
     }
 
     public void UpdateCoinCount(int value)
     {
         currentCoins += value;
-        //effect.PlayOneShot(clip);
+        effect.PlayOneShot(clip);
         // 코인 먹었을때 소리 출력
         coins?.Invoke(currentCoins);
     }

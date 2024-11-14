@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c474ac5deea7c4f95adc21b06e0be3, type: 3}
   m_Name: BlackCar
   m_EditorClassIdentifier: 
-  speed: 2
+  itemName: BlackCar
+  prefab: {fileID: 4773050246646903828, guid: 3c1b196fc283a854189cfe2df0ff73c6, type: 3}
+  speedMin: 2
+  speedMax: 5
   color: {r: 0, g: 0, b: 0, a: 0}
